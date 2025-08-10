@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/background_widget.dart';
@@ -415,145 +417,45 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                       ),
                     ),
                     if (_model.pageLanguage == 'kurdish')
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(6.0, 5.0, 6.0, 0.0),
-                        child: FlutterFlowChoiceChips(
-                          options: FFAppState()
-                              .tagslist
-                              .map((label) => ChipData(label))
-                              .toList(),
-                          onChanged: (val) async {
-                            safeSetState(
-                                () => _model.tagsValue = val?.firstOrNull);
-                            logFirebaseEvent(
-                                'HOME_PAGE_tags_ON_FORM_WIDGET_SELECTED');
-                            if (_model.fulllist) {
-                              logFirebaseEvent('tags_update_page_state');
-                              _model.fulllist = false;
-                              _model.choiceData = _model.tagsValue!;
-                              safeSetState(() {});
-                            } else {
-                              if (_model.choiceData == _model.tagsValue) {
-                                logFirebaseEvent('tags_navigate_to');
+                      SizedBox(
+                        height: 50,
+                        width: double.infinity,
+                        child: AutoScrollChips(
+                          onSelected: (String? selected) async {
+                            if (selected != null) {
+                              setState(() {
+                                _model.tagsValue = selected;
+                                _model.choiceData = selected;
+                              });
 
-                                context.pushNamed(HomeWidget.routeName);
-                              } else {
+                              logFirebaseEvent(
+                                  'HOME_PAGE_tags_ON_FORM_WIDGET_SELECTED');
+
+                              if (_model.fulllist) {
                                 logFirebaseEvent('tags_update_page_state');
-                                _model.choiceData = _model.tagsValue!;
-                                safeSetState(() {});
-                                logFirebaseEvent('tags_widget_animation');
-                                if (animationsMap[
-                                        'choiceChipsOnActionTriggerAnimation'] !=
-                                    null) {
-                                  animationsMap[
-                                          'choiceChipsOnActionTriggerAnimation']!
-                                      .controller
-                                      .reset();
-                                }
-                                logFirebaseEvent('tags_widget_animation');
-                                if (animationsMap[
-                                        'choiceChipsOnActionTriggerAnimation'] !=
-                                    null) {
-                                  animationsMap[
-                                          'choiceChipsOnActionTriggerAnimation']!
-                                      .controller
-                                      .stop();
-                                }
+                                _model.fulllist = false;
+                                setState(() {});
                               }
+
+                              logFirebaseEvent('tags_firestore_query');
+                              _model.tagData = await queryCategoryRecordOnce(
+                                queryBuilder: (categoryRecord) => categoryRecord
+                                    .where('visibility', isEqualTo: true)
+                                    .where('language',
+                                    isEqualTo: _model.pageLanguage)
+                                    .where('tags', arrayContains: selected)
+                                    .orderBy('sortingorder'),
+                              );
+
+                              logFirebaseEvent('tags_update_page_state');
+                              _model.searchList =
+                                  _model.tagData!.toList().cast<CategoryRecord>();
+                              setState(() {});
+                            } else {
+                              logFirebaseEvent('tags_navigate_to');
+                              context.pushNamed(HomeWidget.routeName);
                             }
-
-                            logFirebaseEvent('tags_firestore_query');
-                            _model.tagData = await queryCategoryRecordOnce(
-                              queryBuilder: (categoryRecord) => categoryRecord
-                                  .where(
-                                    'visibility',
-                                    isEqualTo: true,
-                                  )
-                                  .where(
-                                    'language',
-                                    isEqualTo: _model.pageLanguage,
-                                  )
-                                  .where(
-                                    'tags',
-                                    arrayContains: _model.tagsValue,
-                                  )
-                                  .orderBy('sortingorder'),
-                            );
-                            logFirebaseEvent('tags_update_page_state');
-                            _model.searchList =
-                                _model.tagData!.toList().cast<CategoryRecord>();
-                            safeSetState(() {});
-
-                            safeSetState(() {});
                           },
-                          selectedChipStyle: ChipStyle(
-                            backgroundColor: Color(0xFF3767EC),
-                            textStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  font: GoogleFonts.inter(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                  ),
-                                  color: Colors.white,
-                                  fontSize: 15.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
-                                  lineHeight: 1.5,
-                                ),
-                            iconColor: Colors.black,
-                            iconSize: 15.0,
-                            labelPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            elevation: 0.0,
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          unselectedChipStyle: ChipStyle(
-                            backgroundColor: Colors.white,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  font: GoogleFonts.roboto(
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                  ),
-                                  color: Colors.black,
-                                  fontSize: 15.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
-                                  lineHeight: 1.5,
-                                ),
-                            iconColor: Colors.black,
-                            iconSize: 15.0,
-                            elevation: 0.0,
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          chipSpacing: 4.0,
-                          rowSpacing: 8.0,
-                          multiselect: false,
-                          alignment: WrapAlignment.start,
-                          controller: _model.tagsValueController ??=
-                              FormFieldController<List<String>>(
-                            [],
-                          ),
-                          wrapped: false,
-                        ).animateOnActionTrigger(
-                          animationsMap['choiceChipsOnActionTriggerAnimation']!,
                         ),
                       ),
                     if (_model.pageLanguage == 'kurdish')
@@ -1059,6 +961,110 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+class AutoScrollChips extends StatefulWidget {
+  const AutoScrollChips({
+    super.key,
+    required this.onSelected,
+  });
+  final Future Function(String? selected) onSelected;
+  @override
+  State<AutoScrollChips> createState() => _AutoScrollChipsState();
+}
+
+class _AutoScrollChipsState extends State<AutoScrollChips> {
+  final ScrollController _scrollController = ScrollController();
+  Timer? autoScrollTimer;
+  List<String> chips = FFAppState().tagslist;
+  String? selectedValue;
+  bool userScrolling = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(Duration(milliseconds: 300), () {
+        if (_scrollController.hasClients) {
+          startAutoScroll();
+        }
+      });
+    });
+  }
+
+  void startAutoScroll() {
+    autoScrollTimer?.cancel();
+    autoScrollTimer = Timer.periodic(Duration(milliseconds: 50), (_) async {
+      if (!_scrollController.hasClients ||
+          userScrolling ||
+          selectedValue != null) return;
+
+      final maxScroll = _scrollController.position.maxScrollExtent;
+      final current = _scrollController.offset;
+
+      if (current >= maxScroll - 10) {
+        await _scrollController.animateTo(0,
+            duration: Duration(seconds: 2), curve: Curves.easeOut);
+      } else {
+        _scrollController.jumpTo(current + 1.2);
+      }
+    });
+  }
+
+  void stopAutoScroll() {
+    autoScrollTimer?.cancel();
+  }
+
+  @override
+  void dispose() {
+    stopAutoScroll();
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return NotificationListener<ScrollNotification>(
+      onNotification: (notification) {
+        if (notification is ScrollStartNotification) {
+          userScrolling = true;
+          stopAutoScroll();
+        } else if (notification is ScrollEndNotification) {
+          userScrolling = false;
+          if (selectedValue == null) startAutoScroll();
+        }
+        return false;
+      },
+      child: ListView.builder(
+        controller: _scrollController,
+        scrollDirection: Axis.horizontal,
+        itemCount: chips.length,
+        itemBuilder: (context, index) {
+          final chip = chips[index];
+          final isSelected = chip == selectedValue;
+
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 6),
+            child: ChoiceChip(
+              label: Text(
+                chip,
+                style:
+                TextStyle(color: isSelected ? Colors.white : Colors.black),
+              ),
+              selected: isSelected,
+              backgroundColor: Colors.white,
+              selectedColor: Color(0xff3767ec),
+              onSelected: (bool selected) async {
+                setState(() {
+                  selectedValue = selected ? chip : null;
+                });
+                widget.onSelected.call(selectedValue);
+              },
+            ),
+          );
+        },
       ),
     );
   }
