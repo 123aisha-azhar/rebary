@@ -1,0 +1,194 @@
+{
+  "project_info": {
+    "project_number": "627200581002",
+    "project_id": "rebary-d7b28",
+    "storage_bucket": "rebary-d7b28.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627200581002:android:9e9a957c585a0934153c73",
+        "android_client_info": {
+          "package_name": "com.msmerdan.rebary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627200581002-fqou579hctvav92avdq6lh7ut41ch2k0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.msmerdan.rebary",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "627200581002-6bbb3gjvfk8u30ar1redml231d268rv1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3vcevDLhUQekf8aC9XbeR14KxupCRP-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627200581002-3mtsbjdqcsqso9fh9kp8d7m6b82lahcl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "627200581002-0n46rs09amp8unp1mc14lvj14k27v0ll.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.msmerdan.rebaryguide"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627200581002:android:840da70e3214d9e5153c73",
+        "android_client_info": {
+          "package_name": "com.msmerdan.rebaryguide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627200581002-p88kuet8qlqleb2eo278285qrmi0evj8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.msmerdan.rebaryguide",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "627200581002-6bbb3gjvfk8u30ar1redml231d268rv1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3vcevDLhUQekf8aC9XbeR14KxupCRP-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627200581002-3mtsbjdqcsqso9fh9kp8d7m6b82lahcl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "627200581002-0n46rs09amp8unp1mc14lvj14k27v0ll.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.msmerdan.rebaryguide"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627200581002:android:6bd1b05125a8469a153c73",
+        "android_client_info": {
+          "package_name": "com.rebary.rebarykurdistan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627200581002-o8doqnkil1ejuard4k7miircidrb21ee.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rebary.rebarykurdistan",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "627200581002-6bbb3gjvfk8u30ar1redml231d268rv1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3vcevDLhUQekf8aC9XbeR14KxupCRP-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627200581002-3mtsbjdqcsqso9fh9kp8d7m6b82lahcl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "627200581002-0n46rs09amp8unp1mc14lvj14k27v0ll.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.msmerdan.rebaryguide"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627200581002:android:be6f72251b206c69153c73",
+        "android_client_info": {
+          "package_name": "com.rebarykurdistan.rebary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627200581002-jmapme8vgsasv6ic370e9b694ugedmds.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rebarykurdistan.rebary",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "627200581002-p1cof8hfkepidkjtkpehnk6pqg48tnhu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rebarykurdistan.rebary",
+            "certificate_hash": "9a089a0fd9a106f1c8e7d7f5890e255ef5fb63dc"
+          }
+        },
+        {
+          "client_id": "627200581002-6bbb3gjvfk8u30ar1redml231d268rv1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3vcevDLhUQekf8aC9XbeR14KxupCRP-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627200581002-3mtsbjdqcsqso9fh9kp8d7m6b82lahcl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "627200581002-0n46rs09amp8unp1mc14lvj14k27v0ll.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.msmerdan.rebaryguide"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
