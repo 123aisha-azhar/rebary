@@ -46,7 +46,6 @@ class _ListViewWidgetState extends State<ListViewWidget> {
   late ListViewModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  LatLng? currentUserLocationValue;
 
   @override
   void initState() {
@@ -142,8 +141,6 @@ class _ListViewWidgetState extends State<ListViewWidget> {
       }
     });
 
-    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
-        .then((loc) => safeSetState(() => currentUserLocationValue = loc));
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
   }
@@ -158,22 +155,6 @@ class _ListViewWidgetState extends State<ListViewWidget> {
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
-    if (currentUserLocationValue == null) {
-      return Container(
-        color: FlutterFlowTheme.of(context).primaryBackground,
-        child: Center(
-          child: SizedBox(
-            width: 50.0,
-            height: 50.0,
-            child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(
-                FlutterFlowTheme.of(context).primary,
-              ),
-            ),
-          ),
-        ),
-      );
-    }
 
     return GestureDetector(
       onTap: () {
